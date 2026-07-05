@@ -1,0 +1,24 @@
+.lumio-cta__logo {
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.lumio-cta:hover .lumio-cta__logo {
+  transform: scale(1.05);
+  border-color: var(--lumio-accent-light);
+  box-shadow: 0 12px 32px var(--lumio-accent-glow);
+}
+
+.lumio-cta__button {
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.lumio-cta__button:hover {
+  background-color: var(--lumio-ink-soft);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
+}
+
+.lumio-cta__button:active {
+  transform: translateY(-1px);
+}

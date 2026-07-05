@@ -1,0 +1,105 @@
+/* Variation 1 — adapted from Codrops RotatingOnScrollAnimations */
+
+.lumio-brand-os__panel {
+  padding: 0;
+  background: #141414;
+  pointer-events: none;
+}
+
+.lumio-brand-os__panel:hover {
+  transform: none;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.lumio-brand-os__rotate {
+  --rotate-item-ar: 16 / 10;
+  --rotate-item-width: min(72%, 260px);
+  --rotate-marquee: rgb(190, 175, 110);
+
+  position: relative;
+  height: 100%;
+  border-radius: inherit;
+  overflow: hidden;
+  background: #141414;
+}
+
+.lumio-brand-os__rotate-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background: radial-gradient(rgba(0, 0, 0, 0.2) 10%, rgba(0, 0, 0, 0.8) 80%);
+}
+
+.lumio-brand-os__rotate-scroller {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: auto;
+}
+
+.lumio-brand-os__rotate-mark {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  mix-blend-mode: plus-lighter;
+  transform: translateY(-50%);
+}
+
+.lumio-brand-os__rotate-mark-inner {
+  display: flex;
+  gap: 2rem;
+  width: max-content;
+  position: relative;
+  will-change: transform;
+}
+
+.lumio-brand-os__rotate-mark-inner span {
+  white-space: nowrap;
+  text-transform: uppercase;
+  color: var(--rotate-marquee);
+  font-family: 'Montserrat Alternates', Inter, sans-serif;
+  font-size: clamp(1.5rem, 7vw, 3rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.05em;
+}
+
+.lumio-brand-os__rotate-gallery {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+  margin-top: 14vh;
+  margin-bottom: 22vh;
+}
+
+.lumio-brand-os__rotate-item-wrap {
+  width: 100%;
+  max-width: var(--rotate-item-width);
+  perspective: 720px;
+}
+
+.lumio-brand-os__rotate-item {
+  width: 100%;
+  aspect-ratio: var(--rotate-item-ar);
+  border-radius: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transform-style: preserve-3d;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lumio-brand-os__rotate-mark-inner {
+    transform: none !important;
+  }
+}

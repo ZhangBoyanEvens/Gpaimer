@@ -1,0 +1,200 @@
+/* Ported from Ws_FinDoc ArbixOverviewPage floating navbar */
+
+.arbixWaveNav {
+  position: fixed;
+  top: 1.25rem;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.arbixWaveSearchShell {
+  --nav-x: 50%;
+  --nav-y: 10%;
+  --drag-x: 0px;
+  --drag-y: 0px;
+  width: min(27.6vw, 270px);
+  height: clamp(34px, 4.5vw, 56px);
+  border-radius: 999px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 clamp(20px, 2.6vw, 34px);
+  color: rgba(248, 250, 255, 0.95);
+  pointer-events: auto;
+  backdrop-filter: blur(14px) saturate(122%);
+  -webkit-backdrop-filter: blur(14px) saturate(122%);
+  border: 1px solid rgba(255, 255, 255, 0.56);
+  background:
+    linear-gradient(180deg, rgba(248, 250, 255, 0.34) 0%, rgba(234, 239, 251, 0.2) 58%, rgba(218, 225, 243, 0.24) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.72),
+    inset 0 -12px 22px rgba(122, 138, 181, 0.18),
+    0 10px 26px rgba(26, 36, 68, 0.16),
+    0 1px 10px rgba(255, 255, 255, 0.24);
+  overflow: hidden;
+  will-change: width;
+  transform: translate3d(var(--drag-x), var(--drag-y), 0);
+  transition: width 0.755s cubic-bezier(0.22, 1, 0.36, 1);
+  cursor: grab;
+  touch-action: none;
+}
+
+.arbixWaveSearchShell.arbixWaveSearchShell--dragging {
+  cursor: grabbing;
+}
+
+.arbixWaveSearchShell:not(.arbixWaveSearchShell--entered) {
+  width: 0;
+  opacity: 0;
+  border-color: rgba(255, 255, 255, 0);
+  pointer-events: none;
+}
+
+.arbixWaveSearchShell.arbixWaveSearchShell--entered {
+  width: min(27.6vw, 270px);
+  opacity: 1;
+  transition:
+    width 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.arbixWaveSearchShell::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(120% 90% at var(--nav-x) var(--nav-y), rgba(255, 255, 255, 0.58) 0%, rgba(255, 255, 255, 0.14) 38%, transparent 72%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.34) 0%, rgba(255, 255, 255, 0.12) 58%, transparent 100%);
+  pointer-events: none;
+}
+
+.arbixWaveNavItems {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  align-items: center;
+  justify-items: center;
+  gap: 8px;
+}
+
+.arbixWaveNavItems > * {
+  transition: opacity 0.28s ease, transform 0.28s ease, visibility 0.28s ease;
+}
+
+.arbixWaveNavLink,
+.arbixWaveNavBrand {
+  position: relative;
+  z-index: 2;
+  pointer-events: auto;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+}
+
+.arbixWaveNavLink {
+  color: var(--lumio-text);
+  font-size: clamp(0.78rem, 1.1vw, 0.95rem);
+  letter-spacing: 1px;
+  text-indent: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0 10px;
+  font-family: 'Montserrat Alternates', Inter, system-ui, sans-serif;
+  font-weight: 600;
+}
+
+.arbixWaveNavLink:hover {
+  color: var(--lumio-text);
+}
+
+.arbixWaveNavLink::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: 50%;
+  height: 2px;
+  background: currentColor;
+  transform-origin: 100% 50%;
+  transform: scale3d(0, 1, 1);
+  transition: transform 0.3s cubic-bezier(0.4, 1, 0.8, 1);
+}
+
+.arbixWaveNavLink:hover::before {
+  transform-origin: 0% 50%;
+  transform: scale3d(1, 1, 1);
+}
+
+.arbixWaveNavLink span {
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.4, 1, 0.8, 1);
+}
+
+.arbixWaveNavLink:hover span {
+  transform: scale3d(1.1, 1.1, 1.1);
+}
+
+.arbixWaveNavBrand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(24px, 2.8vw, 34px);
+  height: clamp(24px, 2.8vw, 34px);
+  transition: transform 0.24s ease, opacity 0.24s ease;
+  text-decoration: none;
+}
+
+.arbixWaveNavBrand:hover {
+  transform: scale(1.08);
+}
+
+.arbixWaveNavBrand .lumio-logo {
+  width: 100%;
+  height: 100%;
+}
+
+.arbixWaveNavItem--cta span {
+  white-space: nowrap;
+}
+
+/* Default: only brand logo visible in center */
+.arbixWaveNavItems > :not(.arbixWaveNavItem--brand) {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(2px);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .arbixWaveSearchShell:hover {
+    width: min(92vw, 900px);
+  }
+
+  .arbixWaveSearchShell:hover .arbixWaveNavItems > :not(.arbixWaveNavItem--brand) {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .arbixWaveSearchShell:hover {
+    width: min(94vw, 900px);
+  }
+
+  .arbixWaveNavLink {
+    font-size: 0.72rem;
+    padding: 0 6px;
+  }
+}

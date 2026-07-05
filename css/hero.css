@@ -1,0 +1,32 @@
+.lumio-hero__title {
+  transition: letter-spacing 0.5s ease, opacity 0.5s ease;
+}
+
+.lumio-hero:hover .lumio-hero__title {
+  letter-spacing: -0.045em;
+}
+
+.lumio-hero__visual {
+  aspect-ratio: 3072 / 975;
+  transition: box-shadow 0.5s ease;
+  line-height: 0;
+}
+
+.lumio-hero__media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  will-change: transform;
+}
+
+.lumio-hero__img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lumio-hero__media {
+    transform: none !important;
+  }
+}

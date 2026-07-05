@@ -1,0 +1,54 @@
+/**
+ * Lumio theme — warm neutrals + clay accent + sage secondary
+ * Ratio target: ~70% neutral / 15% ink / 10% accent / 5% sage
+ */
+:root {
+  --lumio-canvas: #f6f3ed;
+  --lumio-surface: #ebe7df;
+  --lumio-surface-2: #e3dfd6;
+  --lumio-card: #fdfaf4;
+  --lumio-line: #d4cec3;
+  --lumio-text: #22201c;
+  --lumio-muted: #7a7368;
+  --lumio-muted-light: #b5afa4;
+
+  --lumio-ink: #22201c;
+  --lumio-ink-deep: #12100e;
+  --lumio-on-ink: #f6f3ed;
+
+  --lumio-accent: #9d6e53;
+  --lumio-accent-deep: #7a5540;
+  --lumio-accent-light: #c49a7e;
+  --lumio-accent-soft: rgba(157, 110, 83, 0.14);
+  --lumio-accent-glow: rgba(157, 110, 83, 0.28);
+
+  --lumio-sage: #6b7f72;
+  --lumio-sage-deep: #55665a;
+  --lumio-sage-soft: rgba(107, 127, 114, 0.12);
+  --lumio-sage-muted: #e6ebe7;
+
+  --lumio-panel-tint-start: #e8e4dc;
+  --lumio-panel-tint-end: #ddd8ce;
+  --lumio-card-tint-start: #f0ebe3;
+  --lumio-card-tint-end: #e8ebe7;
+}
+
+/* Logo gradients (SVG defs in index.html reference these stops) */
+.lumio-accent-gradient {
+  background-image: linear-gradient(135deg, var(--lumio-accent) 0%, var(--lumio-accent-deep) 100%);
+}
+
+.lumio-accent-gradient-text {
+  background-image: linear-gradient(135deg, var(--lumio-accent) 0%, var(--lumio-accent-deep) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.lumio-sage-gradient {
+  background-image: linear-gradient(135deg, var(--lumio-card-tint-start) 0%, var(--lumio-card-tint-end) 100%);
+}
+
+.lumio-panel-gradient {
+  background-image: linear-gradient(135deg, var(--lumio-panel-tint-start) 0%, var(--lumio-panel-tint-end) 100%);
+}

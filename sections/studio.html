@@ -1,0 +1,39 @@
+<section class="lumio-studio py-[120px] px-margin max-w-[1728px] mx-auto bg-page-bg">
+  <div class="lumio-studio__grid">
+    <div class="lumio-studio__content flex flex-col max-w-lg">
+      <h3 class="font-display text-[36px] leading-[1.2] mb-8 font-bold tracking-tight text-text">Spatial Experience</h3>
+      <div class="lumio-studio__tabs flex gap-4 border-b border-line pb-4" role="tablist">
+        <button type="button" class="lumio-studio__tab is-active font-label text-sm font-bold text-text border-b-2 border-accent pb-4 -mb-[17px]" data-tab="exterior" role="tab" aria-selected="true">Exterior</button>
+        <button type="button" class="lumio-studio__tab font-label text-sm font-semibold text-muted pb-4 -mb-[17px]" data-tab="interior" role="tab" aria-selected="false">Interior</button>
+        <button type="button" class="lumio-studio__tab font-label text-sm font-semibold text-muted pb-4 -mb-[17px]" data-tab="structure" role="tab" aria-selected="false">Structure</button>
+      </div>
+      <div class="lumio-studio__copy mt-6">
+        <p class="font-body-md text-muted leading-relaxed is-active" data-studio-copy="exterior">Emerges from terrain.</p>
+        <p class="font-body-md text-muted leading-relaxed" data-studio-copy="interior">Diffused natural light.</p>
+        <p class="font-body-md text-muted leading-relaxed" data-studio-copy="structure">Radial timber framework.</p>
+      </div>
+    </div>
+    <div class="lumio-studio__panel rounded-[28px] relative overflow-hidden border border-line/30 shadow-inner">
+      <div class="lumio-studio__viewer" data-studio-blinds>
+        <div class="lumio-studio__layers">
+          <svg class="lumio-studio__layer lumio-studio__layer--base" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <image data-studio-base href="assets/images/studio/1.webp" x="0" y="0" width="100" height="100" preserveAspectRatio="xMidYMid slice" />
+          </svg>
+          <svg class="lumio-studio__layer lumio-studio__layer--top" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <defs>
+              <mask id="studio-mask-transition" maskUnits="userSpaceOnUse">
+                <rect x="0" y="0" width="100" height="100" fill="black" />
+                <g id="studio-blinds-transition"></g>
+              </mask>
+            </defs>
+            <image data-studio-top href="assets/images/studio/1.webp" x="0" y="0" width="100" height="100" preserveAspectRatio="xMidYMid slice" mask="url(#studio-mask-transition)" />
+          </svg>
+        </div>
+        <div class="lumio-studio__viewer-vignette" aria-hidden="true"></div>
+      </div>
+    </div>
+    <div class="lumio-studio__detail">
+      <a href="#" class="lumio-hyperion"><span><span>Detail</span></span></a>
+    </div>
+  </div>
+</section>

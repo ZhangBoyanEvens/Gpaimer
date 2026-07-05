@@ -1,0 +1,66 @@
+.lumio-svg-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.lumio-logo {
+  display: block;
+  flex-shrink: 0;
+  width: var(--lumio-logo-size, 1.75rem);
+  height: var(--lumio-logo-size, 1.75rem);
+}
+
+.lumio-logo--xs {
+  --lumio-logo-size: 0.875rem;
+}
+
+.lumio-logo--sm {
+  --lumio-logo-size: 1.125rem;
+}
+
+.lumio-logo--md {
+  --lumio-logo-size: 1.75rem;
+}
+
+.lumio-logo--lg {
+  --lumio-logo-size: 4rem;
+}
+
+.lumio-logo__path {
+  fill: url(#lumio-logo-gradient);
+}
+
+.lumio-logo-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.lumio-logo-wrap:hover .lumio-logo {
+  transform: scale(1.06);
+}
+
+.lumio-logo-wrap--circle {
+  border-radius: 999px;
+  border: 1px solid var(--lumio-accent-light);
+  background: rgba(253, 250, 244, 0.6);
+}
+
+.lumio-logo-wrap--circle-sm {
+  width: 2.125rem;
+  height: 2.125rem;
+}
+
+.lumio-logo-wrap--circle-lg {
+  width: 7.5rem;
+  height: 7.5rem;
+  border-color: var(--lumio-accent);
+}
+
+.lumio-footer .lumio-logo__path {
+  fill: url(#lumio-logo-gradient-light);
+}

@@ -1,0 +1,34 @@
+.lumio-testimonial__quote-icon {
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.lumio-testimonial:hover .lumio-testimonial__quote-icon {
+  transform: scale(1.1) rotate(-5deg);
+  opacity: 0.5;
+}
+
+.lumio-testimonial__text {
+  transition: transform 0.4s ease;
+}
+
+.lumio-testimonial:hover .lumio-testimonial__text {
+  transform: scale(1.01);
+}
+
+.lumio-testimonial__author {
+  transition: transform 0.35s ease;
+  cursor: default;
+}
+
+.lumio-testimonial__author:hover {
+  transform: translateY(-4px);
+}
+
+.lumio-testimonial__avatar {
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.lumio-testimonial__author:hover .lumio-testimonial__avatar {
+  transform: scale(1.08);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}

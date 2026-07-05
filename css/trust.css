@@ -1,0 +1,17 @@
+.lumio-trust__brand {
+  opacity: 0.72;
+  filter: grayscale(0.35);
+  cursor: default;
+  transition: opacity 0.35s ease, filter 0.35s ease, transform 0.35s ease, color 0.35s ease;
+}
+
+.lumio-trust__brand:hover {
+  opacity: 1;
+  filter: grayscale(0);
+  transform: translateY(-3px) scale(1.05);
+  color: var(--lumio-text);
+}
+
+.lumio-trust__marquee:hover .marquee-content {
+  animation-play-state: paused;
+}

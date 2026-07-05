@@ -1,0 +1,93 @@
+/* Image expand — adapted from Codrops / Ws_FinDoc VetraOverview */
+
+.lumio-collage--stage {
+  min-height: 1200px;
+  height: auto;
+  padding-bottom: 96px;
+  overflow: visible;
+}
+
+.lumio-collage--stage::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 -1px;
+  height: 120px;
+  background: linear-gradient(to bottom, transparent, var(--lumio-canvas, #f6f3ed));
+  pointer-events: none;
+  z-index: 20;
+}
+
+.lumio-collage__title,
+.lumio-collage__copy {
+  will-change: transform, opacity;
+}
+
+.lumio-collage__card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+  overflow: visible;
+}
+
+.lumio-collage__expand-img {
+  display: block;
+  position: relative;
+  flex-shrink: 0;
+  width: 0%;
+  height: 0%;
+  overflow: hidden;
+  border-radius: 24px;
+  box-shadow: 0 20px 44px rgba(34, 32, 28, 0.14);
+  will-change: width, height;
+}
+
+.lumio-collage__card--open .lumio-collage__expand-img {
+  width: 100%;
+  height: 100%;
+}
+
+.lumio-collage__expand-img-inner {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.lumio-collage__card--center {
+  pointer-events: none;
+}
+
+.lumio-collage__badge {
+  opacity: 0;
+  transition: opacity 0.35s ease, transform 0.3s ease;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.lumio-collage__card--open .lumio-collage__badge {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lumio-collage__expand-img {
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 20px 44px rgba(34, 32, 28, 0.14);
+  }
+
+  .lumio-collage__badge {
+    opacity: 1;
+  }
+
+  .lumio-collage__title,
+  .lumio-collage__copy {
+    opacity: 1;
+    transform: none;
+  }
+}

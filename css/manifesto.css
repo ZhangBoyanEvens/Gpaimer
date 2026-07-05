@@ -1,0 +1,58 @@
+.lumio-manifesto__decor {
+  top: 5vh;
+  transition: transform 0.8s ease, opacity 0.5s ease;
+}
+
+.lumio-manifesto:hover .lumio-manifesto__decor {
+  transform: rotate(32deg) scale(1.18);
+  opacity: 0.22;
+}
+
+.lumio-manifesto__text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9em;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  transition: transform 0.4s ease;
+}
+
+.lumio-manifesto__line {
+  display: block;
+}
+
+.lumio-manifesto__mark {
+  position: relative;
+  display: inline-block;
+  margin-left: 0.18em;
+  padding: 0.04em 0.14em;
+  vertical-align: baseline;
+}
+
+.lumio-manifesto__mark-base {
+  color: var(--lumio-text);
+}
+
+.lumio-manifesto__mark-overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--lumio-accent);
+  clip-path: inset(0 100% 100% 0);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.lumio-manifesto__mark-overlay-text {
+  display: block;
+  color: var(--lumio-on-ink);
+  white-space: nowrap;
+}
+
+.lumio-manifesto__mark.is-selected .lumio-manifesto__mark-overlay {
+  clip-path: inset(0 0 0 0);
+}
+
+.lumio-manifesto:hover .lumio-manifesto__text {
+  transform: scale(1.01);
+}

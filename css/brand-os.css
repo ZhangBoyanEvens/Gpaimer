@@ -1,0 +1,141 @@
+.lumio-brand-os__panel {
+  transition: transform 0.45s ease, box-shadow 0.45s ease;
+}
+
+.lumio-brand-os__panel:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.lumio-brand-os__features {
+  --feature-shift: 0px;
+  display: grid;
+  grid-template-columns: 3px 1fr;
+  column-gap: 2rem;
+  align-items: stretch;
+}
+
+.lumio-brand-os__rail {
+  position: relative;
+  min-height: 100%;
+}
+
+.lumio-brand-os__track {
+  position: absolute;
+  inset: 0;
+  width: 3px;
+  border-radius: 2px;
+  background: var(--lumio-line);
+  opacity: 0.42;
+}
+
+.lumio-brand-os__indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 0;
+  border-radius: 2px;
+  background: linear-gradient(to bottom, var(--lumio-accent), var(--lumio-accent-deep));
+  pointer-events: none;
+  will-change: transform, height;
+}
+
+.lumio-brand-os__list {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.lumio-brand-os__feature {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  opacity: 0.42;
+  transform: translateX(var(--feature-shift));
+  transition:
+    opacity 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.lumio-brand-os__feature h4 {
+  color: var(--lumio-muted);
+  transition:
+    color 0.32s ease,
+    letter-spacing 0.32s ease,
+    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.lumio-brand-os__feature p {
+  color: var(--lumio-muted-light);
+  opacity: 0.85;
+  transform: translateY(0);
+  transition:
+    color 0.32s ease,
+    opacity 0.32s ease,
+    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.lumio-brand-os__feature:hover {
+  --feature-shift: 8px;
+  opacity: 0.78;
+}
+
+.lumio-brand-os__feature:hover h4 {
+  color: var(--lumio-text);
+  letter-spacing: -0.015em;
+}
+
+.lumio-brand-os__feature:hover p {
+  color: var(--lumio-muted);
+  opacity: 1;
+  transform: translateY(1px);
+}
+
+.lumio-brand-os__feature.is-active {
+  --feature-shift: 10px;
+  opacity: 1;
+}
+
+.lumio-brand-os__feature.is-active h4 {
+  color: var(--lumio-text);
+  letter-spacing: -0.02em;
+}
+
+.lumio-brand-os__feature.is-active p {
+  color: var(--lumio-text);
+  opacity: 0.68;
+}
+
+.lumio-brand-os__feature.is-active:hover {
+  --feature-shift: 12px;
+}
+
+.lumio-brand-os__feature.is-active:hover h4 {
+  color: var(--lumio-accent-deep);
+}
+
+.lumio-brand-os__feature.is-pressing {
+  --feature-shift: 7px;
+  transition-duration: 0.12s;
+}
+
+.lumio-brand-os__feature:focus-visible {
+  outline: 2px solid var(--lumio-accent);
+  outline-offset: 6px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lumio-brand-os__feature,
+  .lumio-brand-os__feature h4,
+  .lumio-brand-os__feature p,
+  .lumio-brand-os__indicator {
+    transition: none !important;
+  }
+}
