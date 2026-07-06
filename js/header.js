@@ -1,7 +1,9 @@
 /** Ported from Ws_FinDoc src/arbixWave/ArbixOverviewPage.jsx */
 export default function initHeader(root) {
   const shell = root.querySelector('[data-arbix-nav-shell]')
-  if (!shell) return
+  if (!shell || shell.dataset.navInit === 'true') return
+
+  shell.dataset.navInit = 'true'
 
   const drag = {
     active: false,

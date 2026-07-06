@@ -62,6 +62,10 @@ class App {
 
     barba.init({
       prefetchIgnore: true,
+      prevent: ({ href }) => {
+        const path = new URL(href, window.location.origin).pathname
+        return path === "" || path === "/"
+      },
       transitions: [
         {
           name: "default-transition",

@@ -7,6 +7,11 @@
 }
 
 .lumio-hero__visual {
+  --hero-p1-ratio: calc(1950 / 3072);
+  --hero-p2-ratio: calc(1521 / 3072);
+  --hero-stack-ratio: calc((1521 + 1950) / 3072);
+
+  container-type: inline-size;
   aspect-ratio: 3072 / 975;
   transition: box-shadow 0.5s ease;
   line-height: 0;
@@ -14,8 +19,9 @@
 
 .lumio-hero__media {
   position: absolute;
-  inset: 0;
+  left: 0;
   width: 100%;
+  top: calc(120vh - var(--hero-visual-y, 0px) - 100cqw * var(--hero-stack-ratio));
   will-change: transform;
 }
 
@@ -23,6 +29,16 @@
   display: block;
   width: 100%;
   height: auto;
+}
+
+.lumio-hero__img--p2 {
+  aspect-ratio: 3072 / 1521;
+  object-fit: cover;
+}
+
+.lumio-hero__img--p1 {
+  aspect-ratio: 3072 / 1950;
+  object-fit: cover;
 }
 
 @media (prefers-reduced-motion: reduce) {

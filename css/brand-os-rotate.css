@@ -6,6 +6,11 @@
   pointer-events: none;
 }
 
+.lumio-brand-os__panel--rotate {
+  height: clamp(28rem, 70vh, 43.75rem);
+  min-height: 50vh;
+}
+
 .lumio-brand-os__panel:hover {
   transform: none;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
@@ -13,9 +18,15 @@
 
 .lumio-brand-os__rotate {
   --rotate-item-ar: 16 / 10;
-  --rotate-item-width: min(72%, 260px);
+  --rotate-item-width: min(72cqw, 18vw);
   --rotate-marquee: rgb(190, 175, 110);
+  --rotate-focus-ratio: 0.5;
+  --rotate-gallery-gap: 3vh;
+  --rotate-gallery-pad-top: 14vh;
+  --rotate-gallery-pad-bottom: 22vh;
+  --rotate-x-amplitude: 0.14;
 
+  container-type: inline-size;
   position: relative;
   height: 100%;
   border-radius: inherit;
@@ -41,7 +52,7 @@
 
 .lumio-brand-os__rotate-mark {
   position: absolute;
-  top: 50%;
+  top: calc(var(--rotate-focus-ratio) * 100%);
   left: 0;
   z-index: 2;
   width: 100%;
@@ -53,7 +64,7 @@
 
 .lumio-brand-os__rotate-mark-inner {
   display: flex;
-  gap: 2rem;
+  gap: clamp(1rem, 3vw, 2rem);
   width: max-content;
   position: relative;
   will-change: transform;
@@ -64,7 +75,7 @@
   text-transform: uppercase;
   color: var(--rotate-marquee);
   font-family: 'Montserrat Alternates', Inter, sans-serif;
-  font-size: clamp(1.5rem, 7vw, 3rem);
+  font-size: clamp(1.5rem, 4vh, 3rem);
   font-weight: 700;
   line-height: 1;
   letter-spacing: 0.05em;
@@ -75,15 +86,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2.5rem;
-  margin-top: 14vh;
-  margin-bottom: 22vh;
+  gap: var(--rotate-gallery-gap);
+  margin-top: var(--rotate-gallery-pad-top);
+  margin-bottom: var(--rotate-gallery-pad-bottom);
 }
 
 .lumio-brand-os__rotate-item-wrap {
   width: 100%;
   max-width: var(--rotate-item-width);
-  perspective: 720px;
+  perspective: 100cqw;
 }
 
 .lumio-brand-os__rotate-item {
@@ -101,5 +112,17 @@
 @media (prefers-reduced-motion: reduce) {
   .lumio-brand-os__rotate-mark-inner {
     transform: none !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .lumio-brand-os__panel--rotate {
+    height: clamp(24rem, 62vh, 36rem);
+  }
+
+  .lumio-brand-os__rotate {
+    --rotate-gallery-pad-top: 12vh;
+    --rotate-gallery-pad-bottom: 18vh;
+    --rotate-item-width: min(78cqw, 42vw);
   }
 }

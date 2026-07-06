@@ -78,6 +78,7 @@ body.is__transitioning a {
 }
 
 .page-hero.content.team {
+  position: relative;
   height: 100vh;
   min-height: 100vh;
   width: 100%;
@@ -90,6 +91,48 @@ body.is__transitioning a {
   color: var(--team-text);
   font-size: 16px;
   isolation: isolate;
+}
+
+.page-hero__scroll-cue {
+  position: absolute;
+  left: 50%;
+  bottom: 5vh;
+  transform: translateX(-50%);
+  display: block;
+  margin: 0;
+  padding: 0.5rem;
+  border: 0;
+  background: none;
+  color: var(--team-text);
+  cursor: pointer;
+  pointer-events: auto;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.page-hero__scroll-cue:focus-visible {
+  outline: 1px solid color-mix(in srgb, var(--team-text) 40%, transparent);
+  outline-offset: 0.35rem;
+}
+
+.page-hero__scroll-icon {
+  display: block;
+  width: 1.5rem;
+  height: clamp(2.75rem, 6vh, 3.75rem);
+  opacity: 0.38;
+  animation: page-hero-scroll-icon 2.4s ease-in-out infinite;
+}
+
+@keyframes page-hero-scroll-icon {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.38;
+  }
+
+  50% {
+    transform: translateY(0.35rem);
+    opacity: 0.22;
+  }
 }
 
 .page-hero.content.team .title,
@@ -135,6 +178,12 @@ body.is__transitioning a {
 
 [data-motion-text='true'] {
   visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-hero__scroll-icon {
+    animation: none;
+  }
 }
 
 @media screen and (max-width: 768px) {

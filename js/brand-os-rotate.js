@@ -49,6 +49,20 @@ function preloadBackgrounds(root, selector) {
   )
 }
 
+function getRotateMetrics(rotate, scroller) {
+  const style = getComputedStyle(rotate)
+  const focusRatio = parseFloat(style.getPropertyValue('--rotate-focus-ratio')) || 0.5
+  const focusY = scroller.clientHeight * focusRatio
+
+  return { focusRatio, focusY }
+}
+
+function getImageScrollOffset(scroller, rotate, target) {
+  const { focusY } = getRotateMetrics(rotate, scroller)
+  const targetHeight = target.offsetHeight || target.getBoundingClientRect().height
+  return -(focusY - targetHeight / 2)
+}
+
 function initPanelSmoothScroll(scroller, gallery) {
   const panelLenis = new Lenis({
     wrapper: scroller,
@@ -198,7 +212,9 @@ export async function initBrandOsRotate(root, { onActiveImageChange } = {}) {
   }
 
   const positionGalleryItems = () => {
-    const amplitude = scroller.clientWidth * 0.14
+    const style = getComputedStyle(rotate)
+    const amplitudeRatio = parseFloat(style.getPropertyValue('--rotate-x-amplitude')) || 0.14
+    const amplitude = scroller.clientWidth * amplitudeRatio
 
     wraps.forEach((wrap, index) => {
       const angle = index * 0.45
@@ -282,14 +298,15 @@ export async function initBrandOsRotate(root, { onActiveImageChange } = {}) {
 
   const getVisibleImageIndex = () => {
     const scrollerRect = scroller.getBoundingClientRect()
-    const centerY = scrollerRect.top + scrollerRect.height / 2
+    const { focusY } = getRotateMetrics(rotate, scroller)
+    const focusLine = scrollerRect.top + focusY
     let closestIndex = 0
     let closestDistance = Infinity
 
     targets().forEach((target, index) => {
       const rect = target.getBoundingClientRect()
       const targetCenterY = rect.top + rect.height / 2
-      const distance = Math.abs(targetCenterY - centerY)
+      const distance = Math.abs(targetCenterY - focusLine)
 
       if (distance < closestDistance) {
         closestDistance = distance
@@ -324,7 +341,7 @@ export async function initBrandOsRotate(root, { onActiveImageChange } = {}) {
     const target = wraps[index] ?? items[index]
     if (!target) return
 
-    const offset = -scroller.clientHeight * 0.18
+    const offset = getImageScrollOffset(scroller, rotate, target)
     const useAnimation = animate && !reducedMotion
 
     scrollLockUntil = Date.now() + (useAnimation ? PROGRAMMATIC_SCROLL_LOCK_MS : 80)

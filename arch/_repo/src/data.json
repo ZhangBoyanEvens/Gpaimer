@@ -1,65 +1,65 @@
 [
   {
-    "url": "/assets/1.webp",
+    "url": "/assets/images/updates/1.jpg",
     "index": 1,
-    "name": "Morning Ascent",
-    "location": "Northern Range",
-    "data": "June 12, 1972"
+    "name": "Peter Zumthor",
+    "location": "Swiss architect (b. 1943)",
+    "data": "Architecture"
   },
   {
-    "url": "/assets/2.webp",
+    "url": "/assets/images/studio/1.webp",
     "index": 2,
-    "name": "Camp at Dusk",
-    "location": "Base Camp",
-    "data": "September 4, 1974"
+    "name": "Therme Vals",
+    "location": "Atmosphere-driven architecture",
+    "data": "Architecture"
   },
   {
-    "url": "/assets/3.webp",
+    "url": "/assets/images/brand-os/alpine-04.jpg",
     "index": 3,
-    "name": "Crossing the Valley",
-    "location": "Interior Highlands",
-    "data": "July 19, 1971"
+    "name": "Material Focus",
+    "location": "Tactility and silence",
+    "data": "Architecture"
   },
   {
-    "url": "/assets/4.webp",
+    "url": "/assets/images/collage/collage-02.jpg",
     "index": 4,
-    "name": "Quiet Plateau",
-    "location": "High Ridge",
-    "data": "May 3, 1976"
+    "name": "Architectural Philosophy",
+    "location": "Phenomenology of space",
+    "data": "Architecture"
   },
   {
-    "url": "/assets/5.webp",
+    "url": "/assets/images/hero-chapel.jpg",
     "index": 5,
-    "name": "Rest Stop",
-    "location": "Rocky Pass",
-    "data": "August 22, 1973"
+    "name": "Chapel Project",
+    "location": "Small-scale sacred architecture",
+    "data": "Architecture"
   },
   {
-    "url": "/assets/6.webp",
+    "url": "/assets/images/hero-chapel-overlay.jpg",
     "index": 6,
-    "name": "Evening Descent",
-    "location": "Southern Slope",
-    "data": "September 15, 1975"
+    "name": "Architectural Concept",
+    "location": "Space as atmosphere, not object",
+    "data": "Architecture"
   },
   {
-    "url": "/assets/7.webp",
+    "url": "/assets/images/bg/bg-05-reconstruction-site.jpg",
     "index": 7,
-    "name": "Along the Ridge",
-    "location": "Upper Trail",
-    "data": "June 28, 1977"
+    "name": "Purpose",
+    "location": "A reconstructed place of worship",
+    "data": "Architecture"
   },
   {
-    "url": "/assets/8.webp",
+    "url": "/assets/images/studio/2.webp",
     "index": 8,
-    "name": "Shelter from the Wind",
-    "location": "Expedition Route",
-    "data": "July 9, 1970"
+    "name": "Structural Logic",
+    "location": "Spatial envelope",
+    "data": "Architecture"
   },
   {
-    "url": "/assets/9.webp",
+    "url": "/assets/images/collage/collage-06.jpg",
     "index": 9,
-    "name": "Last Light",
-    "location": "Far Horizon",
-    "data": "August 31, 1978"
+    "name": "Timber Structure",
+    "location": "A curved rib system forming enclosure",
+    "data": "Architecture"
   }
 ]

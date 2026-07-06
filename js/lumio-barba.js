@@ -9,7 +9,8 @@ import {
   isSubpageLink,
   setSubpageHeroLabel,
 } from './transition-shared.js'
-import { scrollPastHero } from './subpage-scroll.js?v=21'
+import { initSubpageScrollCue } from './subpage-hero.js?v=22'
+import { initSubpageNav } from './subpage-nav.js?v=22'
 
 const select = (selector) => document.querySelector(selector)
 
@@ -79,8 +80,6 @@ class LumioBarba {
             custom: (data) => isSubpageLink(data.trigger?.href || data.next?.url?.href || ''),
           },
           before: (data) => {
-            window.__lumioHeroScrolled = false
-            sessionStorage.setItem('lumio-scroll-past-hero', '1')
             this.barbaWrapper.classList.add('is__transitioning')
             this.onBeforeLeave?.()
 
@@ -159,12 +158,11 @@ class LumioBarba {
 
                   barba.destroy()
                   import(GALLERY_BUNDLE)
-                    .then(() => {
+                    .then(async () => {
                       const app = window.bootstrapGalleryApp?.()
                       app?.scroll?.s?.refresh?.()
-                      requestAnimationFrame(() => {
-                        requestAnimationFrame(() => scrollPastHero())
-                      })
+                      await initSubpageNav(data.next.container)
+                      initSubpageScrollCue(data.next.container)
                     })
                     .catch(() => {})
                     .finally(() => resolve())

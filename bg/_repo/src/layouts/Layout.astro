@@ -1,5 +1,6 @@
 ---
 import "../styles/index.css"
+import LumioNav from "../components/LumioNav.astro"
 
 const { uid, template } = Astro.props
 ---
@@ -19,10 +20,20 @@ const { uid, template } = Astro.props
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <link rel="stylesheet" href="https://use.typekit.net/gwa0xin.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat+Alternates:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/theme.css" />
+    <link rel="stylesheet" href="/css/logo.css" />
+    <link rel="stylesheet" href="/css/header.css" />
     <link rel="stylesheet" href="/css/page-transition.css" />
     <title>WebGL Pixel Effect on Scroll with GSAP, Three.js and Astro</title>
   </head>
   <body data-barba="wrapper">
+    <LumioNav />
     <div id="app" data-barba="container" data-barba-namespace={uid}>
       <div id="smooth-content" data-page-template={template}>
         <slot />

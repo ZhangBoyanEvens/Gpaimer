@@ -1,5 +1,5 @@
 import { gsap } from 'https://cdn.jsdelivr.net/npm/gsap@3.14.2/+esm'
-import { featureIndexToImageIndex, initBrandOsRotate } from './brand-os-rotate.js?v=14'
+import { featureIndexToImageIndex, initBrandOsRotate } from './brand-os-rotate.js?v=15'
 
 export default async function initBrandOs(root) {
   const section = root.querySelector('.lumio-brand-os') || root
