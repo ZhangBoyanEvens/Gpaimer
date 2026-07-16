@@ -2,7 +2,7 @@ import { gsap } from 'https://cdn.jsdelivr.net/npm/gsap@3.14.2/+esm'
 import { ScrollTrigger } from 'https://cdn.jsdelivr.net/npm/gsap@3.14.2/ScrollTrigger/+esm'
 import { initSmoothScroll } from './smooth-scroll.js'
 
-const ASSET_VERSION = '30'
+const ASSET_VERSION = '34'
 
 const SECTIONS = [
   { id: 'site-header', file: 'header.html', init: () => import('./header.js') },

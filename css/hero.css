@@ -7,9 +7,9 @@
 }
 
 .lumio-hero__visual {
-  --hero-p1-ratio: calc(1950 / 3072);
+  --hero-p1-ratio: calc(1200 / 2400);
   --hero-p2-ratio: calc(1521 / 3072);
-  --hero-stack-ratio: calc((1521 + 1950) / 3072);
+  --hero-stack-ratio: calc(var(--hero-p2-ratio) + var(--hero-p1-ratio));
 
   container-type: inline-size;
   aspect-ratio: 3072 / 975;
@@ -37,8 +37,10 @@
 }
 
 .lumio-hero__img--p1 {
-  aspect-ratio: 3072 / 1950;
+  width: 100%;
+  aspect-ratio: 2400 / 1200;
   object-fit: cover;
+  object-position: top center;
 }
 
 @media (prefers-reduced-motion: reduce) {
