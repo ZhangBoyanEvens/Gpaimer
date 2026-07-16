@@ -14,13 +14,6 @@
     "data": "Architecture"
   },
   {
-    "url": "/assets/images/brand-os/alpine-04.jpg",
-    "index": 3,
-    "name": "Material Focus",
-    "location": "Tactility and silence",
-    "data": "Architecture"
-  },
-  {
     "url": "/assets/images/collage/collage-02.jpg",
     "index": 4,
     "name": "Architectural Philosophy",
@@ -49,17 +42,17 @@
     "data": "Architecture"
   },
   {
-    "url": "/assets/images/studio/2.webp",
+    "url": "/assets/images/arch/detail-roof.jpg?v=30",
     "index": 8,
-    "name": "Structural Logic",
-    "location": "Spatial envelope",
+    "name": "Roof Detail",
+    "location": "Zinc roof, glulam and clerestory assembly",
     "data": "Architecture"
   },
   {
-    "url": "/assets/images/collage/collage-06.jpg",
+    "url": "/assets/images/arch/detail-foundation.jpg?v=30",
     "index": 9,
-    "name": "Timber Structure",
-    "location": "A curved rib system forming enclosure",
+    "name": "Foundation Detail",
+    "location": "Shingle wall, floor build-up and concrete base",
     "data": "Architecture"
   }
 ]

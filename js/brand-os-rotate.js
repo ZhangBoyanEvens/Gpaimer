@@ -6,7 +6,9 @@ gsap.registerPlugin(ScrollTrigger)
 
 const PANEL_LERP = 0.06
 const SCROLL_SCRUB = 1.75
-const SECTION_PIN_SCRUB = 8
+const SECTION_PIN_SCRUB = 2.6
+const SECTION_PIN_DISTANCE_SCALE = 0.68
+const SECTION_PIN_HOLD_VH = 0.08
 const MARQUEE_SCRUB = 1.45
 const SECTION_PIN_ID = 'brand-os-scroll-lock'
 
@@ -109,13 +111,30 @@ function initPanelSmoothScroll(scroller, gallery) {
 }
 
 function initSectionScrollLock({ section, scroller, gallery, panelLenis, onProgress }) {
-  const getMaxScroll = () => Math.max(0, gallery.scrollHeight - scroller.clientHeight)
+  const getMaxScroll = () => {
+    if (panelLenis && Number.isFinite(panelLenis.limit)) {
+      return Math.max(0, panelLenis.limit)
+    }
+
+    const style = getComputedStyle(gallery)
+    const marginTop = parseFloat(style.marginTop) || 0
+    const marginBottom = parseFloat(style.marginBottom) || 0
+    const contentHeight = gallery.scrollHeight + marginTop + marginBottom
+
+    return Math.max(0, contentHeight - scroller.clientHeight)
+  }
+
+  const getPinHold = () => Math.round(window.innerHeight * SECTION_PIN_HOLD_VH)
+  const getPinDistance = () => {
+    const max = getMaxScroll()
+    return Math.max(Math.round(max * SECTION_PIN_DISTANCE_SCALE) + getPinHold(), 1)
+  }
 
   const setGalleryScroll = (value) => {
     const y = gsap.utils.clamp(0, getMaxScroll(), value)
 
     if (panelLenis) {
-      panelLenis.scrollTo(y, { lerp: PANEL_LERP })
+      panelLenis.scrollTo(y, { immediate: true })
     } else {
       scroller.scrollTop = y
     }
@@ -127,15 +146,21 @@ function initSectionScrollLock({ section, scroller, gallery, panelLenis, onProgr
     id: SECTION_PIN_ID,
     trigger: section,
     start: 'top top',
-    end: () => `+=${Math.max(getMaxScroll(), 1)}`,
+    end: () => `+=${getPinDistance()}`,
     pin: true,
     pinSpacing: true,
     scrub: SECTION_PIN_SCRUB,
     invalidateOnRefresh: true,
     anticipatePin: 0,
     onUpdate(self) {
-      const easedProgress = easePinProgress(self.progress)
-      setGalleryScroll(easedProgress * getMaxScroll())
+      const max = getMaxScroll()
+      if (max <= 0) return
+
+      const distance = getPinDistance()
+      const scrollPixels = Math.max(distance - getPinHold(), 1)
+      const localProgress = Math.min(1, (self.progress * distance) / scrollPixels)
+      const easedProgress = easePinProgress(localProgress)
+      setGalleryScroll(easedProgress * max)
       onProgress?.()
     },
   })
@@ -150,7 +175,10 @@ function initSectionScrollLock({ section, scroller, gallery, panelLenis, onProgr
       const current = panelLenis?.scroll ?? scroller.scrollTop
       const galleryProgress = current / max
       const linearProgress = inverseEasePinProgress(galleryProgress)
-      trigger.scroll(trigger.start + linearProgress * (trigger.end - trigger.start))
+      const distance = getPinDistance()
+      const scrollPixels = Math.max(distance - getPinHold(), 1)
+      const pinProgress = (linearProgress * scrollPixels) / distance
+      trigger.scroll(trigger.start + pinProgress * (trigger.end - trigger.start))
     },
     destroy() {
       trigger.kill()
@@ -158,17 +186,27 @@ function initSectionScrollLock({ section, scroller, gallery, panelLenis, onProgr
   }
 }
 
-const FEATURE_IMAGE_OFFSET = 1
-const IMAGES_PER_FEATURE = 4
+// Button 1→img1, button 2→img2, button 3→img8 (1-based)
+const FEATURE_IMAGE_INDEX = [0, 1, 7]
 const PROGRAMMATIC_SCROLL_LOCK_MS = 1200
 
 export function featureIndexToImageIndex(featureIndex) {
-  return featureIndex * IMAGES_PER_FEATURE + FEATURE_IMAGE_OFFSET
+  return FEATURE_IMAGE_INDEX[featureIndex] ?? FEATURE_IMAGE_INDEX[0]
 }
 
 export function imageIndexToFeatureIndex(imageIndex) {
-  if (imageIndex <= FEATURE_IMAGE_OFFSET) return 0
-  return Math.floor((imageIndex - FEATURE_IMAGE_OFFSET) / IMAGES_PER_FEATURE)
+  let bestIndex = 0
+  let bestDistance = Infinity
+
+  FEATURE_IMAGE_INDEX.forEach((target, index) => {
+    const distance = Math.abs(imageIndex - target)
+    if (distance < bestDistance) {
+      bestDistance = distance
+      bestIndex = index
+    }
+  })
+
+  return bestIndex
 }
 
 export async function initBrandOsRotate(root, { onActiveImageChange } = {}) {

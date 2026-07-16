@@ -2,11 +2,12 @@ import { gsap } from 'https://cdn.jsdelivr.net/npm/gsap@3.12.7/+esm'
 
 const BLIND_COUNT = 24
 const SVG_NS = 'http://www.w3.org/2000/svg'
-const TAB_ORDER = ['exterior', 'interior', 'structure']
+const TAB_ORDER = ['southwest', 'west', 'northwest', 'east']
 const IMAGES = [
-  'assets/images/studio/1.webp',
-  'assets/images/studio/2.webp',
-  'assets/images/studio/3.webp',
+  'assets/images/studio/1.webp?v=29',
+  'assets/images/studio/2.webp?v=29',
+  'assets/images/studio/3.webp?v=29',
+  'assets/images/studio/4.webp?v=29',
 ]
 
 function tabToIndex(tab) {

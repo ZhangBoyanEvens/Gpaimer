@@ -1,65 +1,65 @@
 [
   {
-    "url": "/assets/1.webp",
+    "url": "/assets/1.webp?v=31",
     "index": 1,
-    "name": "Morning Ascent",
-    "location": "Northern Range",
-    "data": "June 12, 1972"
+    "name": "Section 1",
+    "location": "1:75 longitudinal section",
+    "data": "Model"
   },
   {
-    "url": "/assets/2.webp",
+    "url": "/assets/2.webp?v=31",
     "index": 2,
-    "name": "Camp at Dusk",
-    "location": "Base Camp",
-    "data": "September 4, 1974"
+    "name": "Floor Plan",
+    "location": "1:50 plan",
+    "data": "Model"
   },
   {
-    "url": "/assets/3.webp",
+    "url": "/assets/3.webp?v=31",
     "index": 3,
-    "name": "Crossing the Valley",
-    "location": "Interior Highlands",
-    "data": "July 19, 1971"
+    "name": "Section 2",
+    "location": "1:75 cross section",
+    "data": "Model"
   },
   {
-    "url": "/assets/4.webp",
+    "url": "/assets/4.webp?v=31",
     "index": 4,
-    "name": "Quiet Plateau",
-    "location": "High Ridge",
-    "data": "May 3, 1976"
+    "name": "Overall Exploded 3D Model",
+    "location": "Assembly overview",
+    "data": "Model"
   },
   {
-    "url": "/assets/5.webp",
+    "url": "/assets/5.webp?v=31",
     "index": 5,
-    "name": "Rest Stop",
-    "location": "Rocky Pass",
-    "data": "August 22, 1973"
+    "name": "Toposolid + Foundation",
+    "location": "3D Axonometric",
+    "data": "Model"
   },
   {
-    "url": "/assets/6.webp",
+    "url": "/assets/6.webp?v=31",
     "index": 6,
-    "name": "Evening Descent",
-    "location": "Southern Slope",
-    "data": "September 15, 1975"
+    "name": "Floor",
+    "location": "3D Axonometric",
+    "data": "Model"
   },
   {
-    "url": "/assets/7.webp",
+    "url": "/assets/7.webp?v=31",
     "index": 7,
-    "name": "Along the Ridge",
-    "location": "Upper Trail",
-    "data": "June 28, 1977"
+    "name": "Body + Facade",
+    "location": "3D Axonometric",
+    "data": "Model"
   },
   {
-    "url": "/assets/8.webp",
+    "url": "/assets/8.webp?v=31",
     "index": 8,
-    "name": "Shelter from the Wind",
-    "location": "Expedition Route",
-    "data": "July 9, 1970"
+    "name": "Roof",
+    "location": "3D Axonometric",
+    "data": "Model"
   },
   {
-    "url": "/assets/9.webp",
+    "url": "/assets/9.webp?v=31",
     "index": 9,
-    "name": "Last Light",
-    "location": "Far Horizon",
-    "data": "August 31, 1978"
+    "name": "Material",
+    "location": "Carbon inventory",
+    "data": "Model"
   }
 ]

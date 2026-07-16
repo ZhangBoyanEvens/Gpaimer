@@ -2,7 +2,7 @@ import { gsap } from 'https://cdn.jsdelivr.net/npm/gsap@3.14.2/+esm'
 import { ScrollTrigger } from 'https://cdn.jsdelivr.net/npm/gsap@3.14.2/ScrollTrigger/+esm'
 import { initSmoothScroll } from './smooth-scroll.js'
 
-const ASSET_VERSION = '21'
+const ASSET_VERSION = '30'
 
 const SECTIONS = [
   { id: 'site-header', file: 'header.html', init: () => import('./header.js') },
@@ -11,7 +11,7 @@ const SECTIONS = [
   { id: 'section-collage', file: 'collage.html', init: () => import('./collage.js') },
   { id: 'section-manifesto', file: 'manifesto.html', init: () => import('./manifesto.js') },
   { id: 'section-brand-os', file: 'brand-os.html', init: () => import(`./brand-os.js?v=${ASSET_VERSION}`) },
-  { id: 'section-studio', file: 'studio.html', init: () => import('./studio.js') },
+  { id: 'section-studio', file: 'studio.html', init: () => import(`./studio.js?v=${ASSET_VERSION}`) },
   { id: 'section-testimonial', file: 'testimonial.html', init: () => import('./testimonial.js') },
   { id: 'section-updates', file: 'updates.html', init: () => import('./updates.js') },
   { id: 'site-footer', file: 'footer.html', init: () => import('./footer.js') },
