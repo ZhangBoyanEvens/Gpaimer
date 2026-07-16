@@ -1,7 +1,8 @@
 import { getScrollY } from './smooth-scroll.js'
 
 const LERP_SPEED = 0.18
-const PARALLAX_FACTOR = 0.52
+// 0.8× faster than previous 0.52 → 0.52 * 1.8
+const PARALLAX_FACTOR = 0.936
 
 export default function initHero(root) {
   const section = root.querySelector('.lumio-hero')
